@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int currentSkinIndex = 0;
     public int currency = 0;
     public int skinAvailability = 1;
+    public int emeralds = 0;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
            // sessão prévia
            currentSkinIndex = PlayerPrefs.GetInt("CurrentSkin");
            currency = PlayerPrefs.GetInt ("Currency");
+           emeralds = PlayerPrefs.GetInt ("Emeralds");
            skinAvailability = PlayerPrefs.GetInt("SkinAvailability");
        }
        else 
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetInt ("CurrentSkin", currentSkinIndex);
         PlayerPrefs.SetInt ("Currency", currency);
+        PlayerPrefs.SetInt ("Emeralds", emeralds);
         PlayerPrefs.SetInt ("SkinAvailability", skinAvailability);
 
     }

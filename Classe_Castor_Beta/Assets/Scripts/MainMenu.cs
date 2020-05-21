@@ -10,14 +10,19 @@ public class MainMenu : MonoBehaviour
     public GameObject levelButtonContainer;
     public GameObject shopButtonPrefab;
     public GameObject shopButtonContainer;
+
     public Text currencyText;
+    public Text currencyCoinsUserInfoText;
+    public Text currencyEmeraldsUserInfoText;
 
     public Material playerMaterial;
 
     private void Start() 
     {
         ChangePlayerSkin (GameManager.Instance.currentSkinIndex);
-        currencyText.text = "Currency : " + GameManager.Instance.currency.ToString ();
+        currencyText.text = "Moedas : " + GameManager.Instance.currency.ToString ();
+        currencyCoinsUserInfoText.text = " " + GameManager.Instance.currency.ToString ();
+        currencyEmeraldsUserInfoText.text = " " + GameManager.Instance.emeralds.ToString ();
 
         Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels");
         foreach (Sprite thumbnail in thumbnails)
@@ -90,7 +95,11 @@ public class MainMenu : MonoBehaviour
                 GameManager.Instance.currency -= cost;
                 GameManager.Instance.skinAvailability += 1 << index;
                 GameManager.Instance.Save ();
+
                 currencyText.text = "Currency : " + GameManager.Instance.currency.ToString ();
+                currencyCoinsUserInfoText.text = " " + GameManager.Instance.currency.ToString ();
+                currencyEmeraldsUserInfoText.text = " " + GameManager.Instance.emeralds.ToString ();
+
                 shopButtonContainer.transform.GetChild (index).GetChild (0).gameObject.SetActive (false);
                 ChangePlayerSkin (index);
 
